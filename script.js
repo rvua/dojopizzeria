@@ -32,16 +32,34 @@ console.log(pizza2);
 console.log(pizza3);
 console.log(pizza4);
 
-function randomPizza(crustType, sauceType, cheeses, toppings){
-    var crust = ['hand tossed', 'deep dish'];
-    var sauce = ['marinara', 'traditional'];
-    var cheese = ['mozzarella', 'parmasean'];
-    var topping = ['olive', 'sausage', 'pepperoni']
-    var pizza = {};
-    pizza.crust = crustType;
-    pizza.sauce = sauceType;
-    pizza.cheese = cheeses;
-    pizza.topping = toppings;
-    return Math.random(pizza); 
+// Bonus Challenge: Create a function called randomPizza 
+// that uses Math.random() to create a random pizza!
+var crust = ['hand tossed', 'deep dish', 'thin', 'gluten free'];
+var sauce = ['marinara', 'traditional', 'bbq'];
+var cheese = ['mozzarella', 'parmasean', 'feta', 'cheddar'];
+var topping = ['olive', 'sausage', 'pepperoni'];
+
+function randomRange(max, min){
+    return Math.floor(Math.random() * max - min) + min;
 }
-console.log(pizza);
+
+function randomPick(arr) {
+    var i = Math.floor(arr.length * Math.random());
+    return arr[i]
+}
+
+function randomPizza() {
+    var pizza = {};
+    pizza.crust = randomPick(crust);
+    pizza.sauce = randomPick(sauce);
+    pizza.cheese = [];
+    pizza.topping = [];
+    for(var i=0; i<randomRange(5, 1); i++) {
+        pizza.cheese.push(randomPick(cheese));
+    }
+    for(var i=0; i<randomRange(4, 0); i++) {
+        pizza.topping.push(randomPick(topping));
+    }
+    return pizza;
+}
+console.log(randomPizza()); 
