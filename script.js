@@ -1,65 +1,82 @@
-// Create a function called pizzaOven. We should 
-// feel free to customize what information we keep 
-// track of for our pizza, but let's make sure that 
-// we include the following: crustType, sauceType, 
-// cheeses, and toppings.
-
-// Create a function called pizzaOven that returns 
-// a JavaScript (Pizza) Object
-function pizzaOven(crustType, sauceType, cheeses, toppings){
+function pizzaOven(crustType, sauceType, cheeses, toppings) {
     var pizza = {};
     pizza.crustType = crustType;
     pizza.sauceType = sauceType;
     pizza.cheeses = cheeses;
     pizza.toppings = toppings;
-    return pizza; 
+    return pizza;
 }
-var pizza1 = pizzaOven('deep dish', 
-'traditional', ['mozzarella'], ['pepperoni', 'sausage']);
 
-var pizza2 = pizzaOven('hand tossed', 
-'marinara', ['mozzarella', 'feta'], ['mushrooms', 
-'olives', 'onions']);
-
-var pizza3 = pizzaOven('hand tossed', 
-'traditional', ['mozzarella'], ['pepperoni']);
-
-var pizza4 = pizzaOven('hand tossed', 
-'marinara', ['feta'], ['sausage']);
-
+var pizza1 = pizzaOven("deep dish", "traditional", ["mozzarella"], ["pepperoni", "sausage"]);
 console.log(pizza1);
+
+var pizza2 = pizzaOven("hand tossed", "marinara", ["mozzarella", "feta"], ["mushrooms", "olives", "onions"]);
 console.log(pizza2);
-console.log(pizza3);
-console.log(pizza4);
 
-// Bonus Challenge: Create a function called randomPizza 
-// that uses Math.random() to create a random pizza!
-var crust = ['hand tossed', 'deep dish', 'thin', 'gluten free'];
-var sauce = ['marinara', 'traditional', 'bbq'];
-var cheese = ['mozzarella', 'parmasean', 'feta', 'cheddar'];
-var topping = ['olive', 'sausage', 'pepperoni'];
+var crustTypes = [
+    "deep dish",
+    "hand tossed",
+    "thin and crispy",
+    "cauliflower",
+    "gluten free",
+    "hawaiian bread"
+];
 
-function randomRange(max, min){
+var sauceTypes = [
+    "traditional",
+    "marinara",
+    "bbq",
+    "white sauce",
+    "nacho cheese",
+    "tikka masala"
+];
+
+var cheeses = [
+    "mozzarella",
+    "cheddar",
+    "feta",
+    "swiss cheese",
+    "blue cheese",
+    "goat cheese",
+    "provolone",
+    "parmesan",
+    "vegan cheese"
+];
+
+var toppings = [
+    "pepperoni",
+    "sausage",
+    "chicken",
+    "corn",
+    "olives",
+    "bell peppers",
+    "onions",
+    "mushrooms",
+    "anchovies"
+];
+
+function randomRange(max, min) {
     return Math.floor(Math.random() * max - min) + min;
 }
 
 function randomPick(arr) {
     var i = Math.floor(arr.length * Math.random());
-    return arr[i]
+    return arr[i];
 }
 
 function randomPizza() {
     var pizza = {};
-    pizza.crust = randomPick(crust);
-    pizza.sauce = randomPick(sauce);
-    pizza.cheese = [];
-    pizza.topping = [];
+    pizza.crustType = randomPick(crustTypes);
+    pizza.sauceType = randomPick(sauceTypes);
+    pizza.cheeses = [];
+    pizza.toppings = [];
     for(var i=0; i<randomRange(5, 1); i++) {
-        pizza.cheese.push(randomPick(cheese));
+        pizza.cheeses.push(randomPick(cheeses));
     }
     for(var i=0; i<randomRange(4, 0); i++) {
-        pizza.topping.push(randomPick(topping));
+        pizza.toppings.push(randomPick(toppings));
     }
     return pizza;
 }
-console.log(randomPizza()); 
+
+console.log(randomPizza());
